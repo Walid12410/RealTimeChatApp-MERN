@@ -5,7 +5,7 @@ import cloudinary from "cloudinary";
 
 /**
  * @desc get users for sidebar
- * @Route /api/message/user
+ * @Route /api/messages/users
  * @method get
  * @access private (required user token) 
 */
@@ -24,7 +24,7 @@ export const getUserForSideBarController = async (req, res) => {
 
 /**
  * @desc get message between users
- * @Route /api/message/:id
+ * @Route /api/messages/:id
  * @method get
  * @access private (required user token) 
 */
@@ -56,7 +56,7 @@ export const getMessagesController = async (req, res) => {
 
 /**
  * @desc send message
- * @Route /api/message/send/:id
+ * @Route /api/messages/send/:id
  * @method post
  * @access private (required user token) 
 */

@@ -1,7 +1,7 @@
 import { generateToken } from "../lib/utils.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
-import cloudinary from "cloudinary";
+import cloudinary from "../lib/cloudinary.js";
 
 
 /**
@@ -132,7 +132,24 @@ export const updateProfileController = async (req, res) => {
 
         res.status(200).json(updateUser);
     } catch (error) {
-        console.log("Error in logout controller", error.message);
+        console.log("Error in updating image controller", error.message);
         res.status(500).json({ message: "Internal server error" });
     }
 }
+
+
+
+/**
+ * @desc check auth
+ * @Route /api/auth/check
+ * @method get
+ * @access private (required user token) 
+*/
+export const checkAuthController = (req, res) => {
+    try {
+      res.status(200).json(req.user);
+    } catch (error) {
+      console.log("Error in checkAuth controller", error.message);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+};

@@ -2,7 +2,8 @@ import express from "express";
 import { loginController,
     logoutController,
     signupController,
-    updateProfileController
+    updateProfileController,
+    checkAuthController
 } from "../controllers/auth.controller.js";
 import { verifyToken } from "../middleware/auth.middleware.js";
 
@@ -17,5 +18,9 @@ router.post('/logout', logoutController);
 
 // api/auth/update-profile
 router.put("/update-profile", verifyToken ,updateProfileController);
+
+// api/auth/check
+router.get("/check", verifyToken, checkAuthController);
+
 
 export default router;

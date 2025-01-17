@@ -4,18 +4,19 @@ import { getUserForSideBarController,
     getMessagesController,
     sendMessageController
 } from "../controllers/message.controller.js";
-import validationObjectId  from "../middleware/validObjectId.middleware.js";
-
-// api/message/user
-router.get("/user",verifyToken, getUserForSideBarController);
-
-// api/message/:id
-router.get("/:id",validationObjectId,verifyToken, getMessagesController);
-
-// api/message/send/:id
-router.post("/send/:id",validationObjectId,verifyToken, sendMessageController);
 
 const router = express.Router();
+
+// api/messages/users
+router.get("/users",verifyToken, getUserForSideBarController);
+
+// api/message/:id
+router.get("/:id",verifyToken, getMessagesController);
+
+// api/message/send/:id
+router.post("/send/:id",verifyToken, sendMessageController);
+
+export default router;
 
 
 
