@@ -4,15 +4,18 @@ import { loginController,
     signupController,
     updateProfileController
 } from "../controllers/auth.controller.js";
-import { protectRoute } from "../middleware/auth.middleware.js";
+import { verifyToken } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
-
+// api/auth/signup
 router.post('/signup', signupController);
+// api/auth/login
 router.post('/login', loginController);
+// api/auth/logout
 router.post('/logout', logoutController);
 
-router.put("/update-profile", protectRoute ,updateProfileController);
+// api/auth/update-profile
+router.put("/update-profile", verifyToken ,updateProfileController);
 
 export default router;
